@@ -15,7 +15,7 @@ public function onEnable(){
 }
  public function playerBlockTouch(PlayerInteractEvent $event){
  if($event->getPlayer()->getGamemode()==1){
- if($event->getBlock()->getID() == 154 || $event->getBlock()->getID() == 118){
+ if($event->getBlock()->getID() == 154 || $event->getBlock()->getID() == 118 || $event->getBlock()->getID() == 199){
  $event->setCancelled(true);
  $event->getPlayer()->sendMessage("§b［XBanCheating］§e创造模式§c禁止使用此物品！");
  	}
