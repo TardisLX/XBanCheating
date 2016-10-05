@@ -11,9 +11,18 @@ use pocketmine\utils\TextFormat as MT;
 use pocketmine\utils\Config;
 
 class Main extends PluginBase implements Listener{
+ 
+ private $path,$conf;
+
 public function onEnable(){
-                @mkdir($this->getDataFolder());
-		$this->Config = new Config($this->getDataFolder()."config.yml", Config::ENUM);
+                $this->path = $this->getDataFolder();
+		@mkdir($this->path);
+				$this->conf = new Config($this->path."Config.yml", Config::YAML,array(
+				"Enable-XBanCheating"=>array(),
+				"#总开关"=>array(),
+                                "Ban-Block"=>array(154,118,199),
+				"#配置文件暂时无用"=>array()
+				));
 	 	$this->getServer()->getPluginManager()->registerEvents($this,$this);
 	  	$this->getLogger()->info("§c xxm［雪宸］制作，仅供测试学习，禁止商业用途~");
 }
