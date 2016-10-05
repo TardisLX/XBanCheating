@@ -18,9 +18,11 @@ public function onEnable(){
              	$this->path = $this->getDataFolder();
 		@mkdir($this->path);
 		$this->conf = new Config($this->path."Config.yml", Config::YAML,array(
-				"admin"=>array()
-				"message"=>"[XBanCheating]创造模式禁止使用此方块！",
-				"item-touch"=>array(118,199,154)
+ +				"Enable-XBanCheating"=>"true",
+ +				"#总开关"=>"控制XBanCheating是否开启",
+                                  "Ban-Block"=>array(154,118,199),
+ -				"#配置文件暂时无用"=>array()
+ +				"#配置文件暂时无用",
 				));
 	 	$this->getServer()->getPluginManager()->registerEvents($this,$this);
 	  	$this->getLogger()->info("§c xxm［雪宸］制作，仅供测试学习，禁止商业用途~");
