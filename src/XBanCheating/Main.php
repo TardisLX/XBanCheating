@@ -21,7 +21,7 @@ public function onEnable(){
  				"Enable-XBanCheating"=>"true",
  				"#总开关"=>"控制XBanCheating是否开启",
  				"Message"=>"§e创造模式,§c禁止与此物品交互！",
-                                  "Ban-Block"=>array(154,118,199),
+                                "Ban-Block"=>array(154,118,199),
  				"#禁止交互列表",
 				));
 	 	$this->getServer()->getPluginManager()->registerEvents($this,$this);
