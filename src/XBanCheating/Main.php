@@ -18,10 +18,10 @@ public function onEnable(){
                 $this->path = $this->getDataFolder();
 		@mkdir($this->path);
 				$this->conf = new Config($this->path."Config.yml", Config::YAML,array(
-				"Enable-XBanCheating"=>array(),
-				"#总开关"=>array(),
+				"Enable-XBanCheating"=>"true",
+				"#总开关"=>"控制XBanCheating是否开启",
                                 "Ban-Block"=>array(154,118,199),
-				"#配置文件暂时无用"=>array()
+				"#配置文件暂时无用",
 				));
 	 	$this->getServer()->getPluginManager()->registerEvents($this,$this);
 	  	$this->getLogger()->info("§c xxm［雪宸］制作，仅供测试学习，禁止商业用途~");
