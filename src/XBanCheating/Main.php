@@ -7,9 +7,13 @@ use pocketmine\event\Listener;
 use pocketmine\Player;
 use pocketmine\Server;
 use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\utils\TextFormat as MT;
+use pocketmine\utils\Config;
 
 class Main extends PluginBase implements Listener{
 public function onEnable(){
+                @mkdir($this->getDataFolder());
+		$this->Config = new Config($this->getDataFolder()."config.yml", Config::ENUM);
 	 	$this->getServer()->getPluginManager()->registerEvents($this,$this);
 	  	$this->getLogger()->info("§c xxm［雪宸］制作，仅供测试学习，禁止商业用途~");
 }
