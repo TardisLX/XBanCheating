@@ -7,7 +7,7 @@ use pocketmine\event\Listener;
 use pocketmine\Player;
 use pocketmine\Server;
 use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\utils\TextFormat as MT;
+use pocketmine\utils\TextFormat;
 use pocketmine\utils\Config;
 
 class Main extends PluginBase implements Listener{
@@ -20,22 +20,30 @@ public function onEnable(){
 		$this->conf = new Config($this->path."Config.yml", Config::YAML,array(
  				"Enable-XBanCheating"=>"true",
  				"#总开关"=>"控制XBanCheating是否开启",
+ 				"Message"=>"§e创造模式,§c禁止与此物品交互！",
                                   "Ban-Block"=>array(154,118,199),
- 				"#总开关暂时无用"=>array()
- 				"#BanBlock可用",
+ 				"#禁止交互列表",
 				));
 	 	$this->getServer()->getPluginManager()->registerEvents($this,$this);
-	  	$this->getLogger()->info("§c xxm［雪宸］制作，仅供测试学习，禁止商业用途~");
+	  	$this->getLogger()->info("§b SnowXxm(雪宸)§6［贴吧ID: 緑搽丶］§a和 §bMattTradis(塔迪斯)§6［贴吧ID: The_Tradis］§a制作~\n§c仅供测试学习，严禁商业用途");
 }
  public function playerBlockTouch(PlayerInteractEvent $event){
  if($event->getPlayer()->getGamemode()==1){
  $blockid = $event->getBlock()->getID();
  $banblockid = $this->conf->get("Ban-Block");
  if(in_array($blockid,$banblockid)){
+ if($this->conf->get("Enable-XBanCheating") == true){
  $event->setCancelled(true);
- $event->getPlayer()->sendMessage([XBanCheating]创造模式无法使用该方块！);
+ $message = $this->conf->get("Message");
+ $event->getPlayer()->sendMessage("§b［XBanCheating］ $message");
  	}
  	}
      }
   }
+  
+  }
+  
+  
 ?>
+
+
