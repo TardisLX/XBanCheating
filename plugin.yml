@@ -3,7 +3,7 @@ main: XBanCheating\Main
 version: 2.2.0
 api: 2.0.0
 load: POSTWORLD
-author: SnowXxm,MattTradis
+author: SnowXxm,MattTardis
 
 commands:
  xbc:
