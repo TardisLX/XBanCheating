@@ -24,6 +24,7 @@ public function onEnable(){
  		 "Enable-XBanCheating"=>"true",
    		 "#1" =>"总开关控制XBanCheating是否开启",
        	         "Message"=>"§e创造模式,§c禁止与此物品交互！",
+                 "GM-Message"=>"§e创造模式,§c禁止与此物品交互，已切换生存!",
                  "Ban-Block"=>array(154,118,199),
                  "#2" =>"禁止交互的方块ID",
                  "admin"=>array(例子),
@@ -45,6 +46,8 @@ public function onEnable(){
  $event->getPlayer()->sendMessage("§b［XBanCheating］ $message");
  	}elseif($event->getBlock()->getID() == 58){
  	$event->getPlayer()->setGamemode("0");
+        $gm-message = $this->conf->get("GM-Message");
+        $event->getPlayer()->sendMessage("§b［XBanCheating］ $gmmessage");
  	}
      }
   }
