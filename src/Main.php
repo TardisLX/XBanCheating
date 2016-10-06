@@ -30,7 +30,7 @@ public function onEnable(){
                  "#3" =>"管理员的游戏名",
 				));
 	 	$this->getServer()->getPluginManager()->registerEvents($this,$this);
-	  	$this->getLogger()->info("§b XBanCheating v1.2.0加载  SnowXxm(雪宸)§6［贴吧ID: 緑搽丶］§a和 §bMattTradis(塔迪斯)§6［贴吧ID: The_Tradis］§a制作~\n§c仅供测试学习，严禁商业用途");
+	  	$this->getLogger()->info("§b XBanCheating v2.1.0加载  SnowXxm(雪宸)§6［贴吧ID: 緑搽丶］§a和 §bMattTradis(塔迪斯)§6［贴吧ID: The_Tradis］§a制作~\n§c仅供测试学习，严禁商业用途");
 }
  public function playerBlockTouch(PlayerInteractEvent $event){
   if($this->conf->get("Enable-XBanCheating") == "true"){
