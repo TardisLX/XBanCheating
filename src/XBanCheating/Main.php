@@ -26,8 +26,11 @@ public function onEnable(){
        	         "Message"=>"§e创造模式,§c禁止与此物品交互！",
                  "GM-Message"=>"§e创造模式,§c禁止与此物品交互，已切换生存!",
                  "Ban-Block"=>array(154,118,199),
+	         "GM-Ban-Block"=>array(58),
+		 "SetChangeGM"=>"0"
                  "#2" =>"禁止交互的方块ID",
                  "admin"=>array(例子),
+	         "gm-admin"=>array(例子)
                  "#3" =>"管理员的游戏名",
 				));
 	 	$this->getServer()->getPluginManager()->registerEvents($this,$this);
@@ -38,9 +41,12 @@ public function onEnable(){
  if($event->getPlayer()->getGamemode()==1){
  $player = $event->getPlayer()->getName();
  $admin = $this->conf->get("admin");
+ $gmadmin = $this->conf->get("gm-admin");
  $blockid = $event->getBlock()->getID();
  $banblockid = $this->conf->get("Ban-Block");
+ $gmbanblockid = $this->conf->get("GM-Ban-Block")
  $gmmessage = $this->conf->get("GM-Message");
+ $gm = $this->conf->get("SetChangeGM");
  if((in_array($blockid,$banblockid)) and (!in_array($player,$admin))){
  $event->setCancelled(true);
  $message = $this->conf->get("Message");
