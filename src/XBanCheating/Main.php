@@ -40,13 +40,13 @@ public function onEnable(){
  $admin = $this->conf->get("admin");
  $blockid = $event->getBlock()->getID();
  $banblockid = $this->conf->get("Ban-Block");
+ $gmmessage = $this->conf->get("GM-Message");
  if((in_array($blockid,$banblockid)) and (!in_array($player,$admin))){
  $event->setCancelled(true);
  $message = $this->conf->get("Message");
  $event->getPlayer()->sendMessage("§b［XBanCheating］ $message");
  	}elseif($event->getBlock()->getID() == 58){
  	$event->getPlayer()->setGamemode("0");
-        $gm-message = $this->conf->get("GM-Message");
         $event->getPlayer()->sendMessage("§b［XBanCheating］ $gmmessage");
  	}
      }
