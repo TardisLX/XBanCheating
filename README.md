@@ -2,7 +2,7 @@
 =========  
 ## **关于项目**:  
    发起者&开发者 `雪宸`    ［SnowXxm］，百度贴吧id: 緑搽丶  
-   开发者 `塔迪斯`［MattTardis］，百度贴吧id: The_Tradis
+   开发者 `塔迪斯`［MattTardis］，百度贴吧id: The_Tardis
      
 ###  **项目介绍**：  
       一个适用于 Pocketmine-MP 的简单的防止创造利用某些物品卡BUG的一个反作弊插件，我们会持续更新使之成为一款适配MCPE服务器的反作弊插件！
