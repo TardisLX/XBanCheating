@@ -25,7 +25,7 @@ public function onEnable(){
    		 "#1" =>"总开关控制XBanCheating是否开启",
        	         "Message"=>"§e创造模式,§c禁止与此物品交互！",
                  "GM-Message"=>"§e创造模式,§c禁止与此物品交互，已切换生存!",
-                 "Ban-Block"=>array(154,118,199),
+                 "Ban-Block"=>array(154,118,199,88,60),
 	         "GM-Ban-Block"=>array(58),
 		 "SetChangeGM"=>"0",
                  "#2" =>"禁止交互的方块ID",
