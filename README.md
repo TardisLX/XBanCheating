@@ -4,7 +4,8 @@
 
 ## **关于项目**:
 
-发起者&开发者 `雪宸`    ［SnowXxm］，百度贴吧id: 緑搽丶  开发者 `塔迪斯`［MattTardis］，百度贴吧id: The_Tardis
+发起者&开发者 `雪宸`    ［SnowXxm］，百度贴吧id: 緑搽丶  
+开发者 `塔迪斯`［MattTardis］，百度贴吧id: The_Tardis  
 
 ==========
 
