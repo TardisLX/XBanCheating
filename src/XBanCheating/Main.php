@@ -7,6 +7,9 @@ use pocketmine\event\Listener;
 use pocketmine\Player;
 use pocketmine\Server;
 use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\Block\BlockPlaceEvent;
+use pocketmine\event\Block\BlockBreakEvent;
+use pocketmine\level\Level;
 use pocketmine\utils\TextFormat;
 use pocketmine\utils\Config;
 use pocketmine\plugin\Plugin;
@@ -23,18 +26,39 @@ public function onEnable(){
 		$this->conf = new Config($this->path."Config.yml", Config::YAML,array(
  		 "Enable-XBanCheating"=>"true",
    		 "#1" =>"总开关控制XBanCheating是否开启",
+   		 "Enable-CBlock"=>"true",
+   		 "#2" =>"创造方块生存无法破坏的开关",
        	         "Message"=>"§e创造模式,§c禁止与此物品交互！",
                  "GM-Message"=>"§e创造模式,§c禁止与此物品交互，已切换生存!",
                  "Ban-Block"=>array(154,118,199,88,60),
 	         "GM-Ban-Block"=>array(58),
 		 "SetChangeGM"=>"0",
-                 "#2" =>"禁止交互的方块ID",
-                 "admin"=>array(例子),
-	         "gm-admin"=>array(例子),
-                 "#3" =>"管理员的游戏名",
+                 "#3" =>"禁止交互的方块ID",
+                 "admin"=>array(SnowXxm),
+	         "gm-admin"=>array(MattTardis),
+                 "#4" =>"管理员的游戏名",
+                 "version"=>"3"
 				));
+				
+				@mkdir($this->getDataFolder().'X_Create_Block');
+				$this->cblock  = new Config($this->getDataFolder().'X_Create_Block/CBlock.yml', Config::YAML,array(
+				"CreateBlock"=>array()
+				));
+
+	  	$this->getLogger()->info("§b ==================");
+	  	$this->getLogger()->info("§a XBanCheating v3.0.0加载!");
+	 		$this->getLogger()->info("§e 作者 SnowXxm and MattTardis");
+	 		$this->getLogger()->info("§c 仅供学习交流，转载请注明出处！");
+	 		$this->getLogger()->info("§6 如果有任何Bug请及时提交，感谢您的使用~");
+	 		$this->getLogger()->info("§b ==================");
+	  	
 	 	$this->getServer()->getPluginManager()->registerEvents($this,$this);
-	  	$this->getLogger()->info("§b XBanCheating v2.2.0加载  SnowXxm(雪宸)§6［贴吧ID: 緑搽丶］§a和 §bMattTradis(塔迪斯)§6［贴吧ID: The_Tradis］§a制作~\n§c仅供测试学习，严禁商业用途");
+	  	
+	$this->getLogger()->info("§e XBanCheating 更新日志:");
+	$this->getLogger()->info("§a -v3.00,加入创造方块生存破坏无掉落");
+	$this->getLogger()->info("§a -v2.20,加入了阻止创造破坏农作物");
+	$this->getLogger()->info("§a -v2.10,加入指令添加，移除白名单");
+	$this->getLogger()->info("§a -v2.00,加入了白名单系统");
 }
  public function playerBlockTouch(PlayerInteractEvent $event){
   if($this->conf->get("Enable-XBanCheating") == "true"){
@@ -58,6 +82,49 @@ public function onEnable(){
      }
   }
   }
+  
+  public function onPlace(BlockPlaceEvent $event){
+  if($event->isCancelled()){
+ return;
+ }
+  $player = $event->getPlayer();
+  if($this->conf->get("Enable-CBlock") == true){
+  if($player->isCreative()){
+  $bx = $event->getBlock()->getX();
+  $by = $event->getBlock()->getY();
+  $bz = $event->getBlock()->getZ();
+  $blevel = $event->getBlock()->getLevel()->getFolderName();
+  $b = $blevel .":". $bx."|".$by."|".$bz;
+  $cb = $this->cblock->get("CreateBlock");
+  $cb[] = $b;
+  $this->cblock->set("CreateBlock",$cb);
+  $this->cblock->save();
+  }
+  }
+  }
+  
+  public function onBreak(BlockBreakEvent $event){
+  if($event->isCancelled()){
+ return;
+ }
+  $player = $event->getPlayer();
+  if($this->conf->get("Enable-CBlock") == true){
+  if(!$player->isCreative()){
+  $bx = $event->getBlock()->getX();
+  $by = $event->getBlock()->getY();
+  $bz = $event->getBlock()->getZ();
+  $blevel = $event->getBlock()->getLevel()->getFolderName();
+  $b = $blevel .":". $bx."|".$by."|".$bz;
+  $cbl = $this->cblock->get("CreateBlock");
+  if(in_array($b,$cbl)){
+  $event->setDrops(array(0));
+					$player->sendTip("§b［XBanCheating］§6创造方块无产物掉落喔~");
+  }
+  
+  }
+  }
+  }
+  
   
   	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
 		$user = $sender->getName();
