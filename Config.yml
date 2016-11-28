@@ -1,0 +1,34 @@
+---
+#插件总开关，控制XBanCheating是否开启
+#设置为true，即可开启功能，设置为false则关闭
+Enable-XBanCheating: "true"
+#CBlock为创造玩家方块记录，开启后生存玩家破坏创造玩家放置的方块将无任何掉落
+Enable-CBlock: "true"
+#Message是创造玩家尝试使用被禁止交互的方块时的提示，例如尝试使用漏斗或展示框
+Message: §e创造模式,§c禁止与此物品交互！
+#GM-Message是创造玩家因为使用被禁止交互的方块而被切换为其他模式的提示，例如尝试使用工作台
+GM-Message: §e创造模式,§c禁止与此物品交互，已切换生存!
+#Ban-Block是设置禁止创造玩家交互的方块列表，请填写方块ID。请务必注意，部分方块的ID可能与该方块的物品的ID不同
+#某些方块无法简单的被禁止交互，例如工作台，您需要使用GM-Ban-Block来进一步阻止
+Ban-Block:
+- 154
+- 118
+- 199
+- 88
+- 60
+#GM-Ban-Block是普通禁止交互无效时的强制手段，当玩家与在列表中的方块交互时，将会被切换游戏模式，以进一步阻止作弊
+GM-Ban-Block:
+- 58
+#设置当玩家与GM-Ban-Block方块交互时被切换的模式，默认为生存。
+SetChangeGM: "0"
+#Ban-Block管理员列表，在管理员列表中的玩家将会不受禁止交互(Ban-Block)的限制
+admin:
+- SnowXxm
+#GM-Ban-Block管理员列表，在管理员列表中的玩家将会不受禁止交互(GM-Ban-Block)的限制
+gm-admin:
+- MattTardis
+#请务必删除默认的SnowXxm和MattTardis两个ID，以防止被利用
+#支持使用指令添加和删除管理员，总命令/xbc
+#配置文件版本，如需获得更新的版本，您可访问https://github.com/MattTardis/XBanCheating
+version: "3"
+...
