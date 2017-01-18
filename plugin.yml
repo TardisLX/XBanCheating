@@ -1,0 +1,18 @@
+name: XBanCheating
+main: XBanCheating\Main
+version: 3.9.1
+api: 
+- 2.0.0
+- 3.0.0
+load: POSTWORLD
+author: SnowXxm
+
+commands:
+ xbc:
+  description: "［XBanCheating］总命令"
+  usage: "/xbc <admin | adminlist>"
+  permission: XBanCheating.command.xbc
+permissions:
+ XBanCheating.command.xbc:
+  default: op
+  description: "［XBanCheating］反作弊插件指令"
