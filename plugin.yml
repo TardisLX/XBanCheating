@@ -1,9 +1,14 @@
 name: XBanCheating
 main: XBanCheating\Main
-version: 3.9.1
+version: 4.2.0
 api: 
+- 1.0.0
+- 1.12.0
 - 2.0.0
+- 2.1.0
 - 3.0.0
+- 3.0.0-ALPHA1
+- 3.0.0-ALPHA2
 load: POSTWORLD
 author: SnowXxm
 
